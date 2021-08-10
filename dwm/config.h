@@ -16,7 +16,7 @@ static const char dmenufont[]       = "monospace:size=10";
 #include "/home/samir/.cache/wal/colors-wal-dwm.h"
 
 /* tagging */
-static const char *tags[] = { "︁", "︁", "🎵︁", "🎮︁", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "︁", "︁", "︁", "🎮︁", "🎭︁", "︁", "[/f]" };
 
 static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
 
