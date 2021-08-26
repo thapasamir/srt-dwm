@@ -19,7 +19,7 @@ static const char dmenufont[]       = "monospace:size=10";
 /* tagging */
 static const char *tags[] = { "︁", "🌐︁", "︁", "🎮︁", "🎭︁", "︁", "⎙︁","👁︁" };
 
-static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
+//static const char *roficmd[] = { "rofi", "-show", "drun", "-show-icons", NULL };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -57,21 +57,27 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb" };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont};
 static const char *termcmd[]  = { "st", NULL };
-
+//screenshot defining comand
+static const char *screenshot[] = {"scrot","/home/samir/Pictures/screenshot/%Y-%m-%d-%T-screenshot.jpg",NULL};
 static Key keys[] = {
 	/*volume */
 	{ 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,                       XF86XK_AudioMute, spawn, {.v = mutevol } },
 	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
 
+   //new config dwm
+	// { MODKEY,			XK_s,		spawn,          SHCMD("dmenu_run") },
+	{ MODKEY,			XK_z,		spawn,          SHCMD("google-chrome-stable") },
+	//screenshot
+	{ 0,							XK_Print,spawn,{.v = screenshot } },
 
 	{ MODKEY,                       XK_F11, spawn, {.v = downvol } },
 	{ MODKEY,                       XK_F9,  spawn, {.v = mutevol } },
 	{ MODKEY,                       XK_F12, spawn, {.v = upvol   } },
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_s,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -105,7 +111,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 
-	{ MODKEY, XK_s, spawn, {.v = roficmd } },
+	//{ MODKEY, XK_s, spawn, {.v = roficmd } },
 
 
 };
